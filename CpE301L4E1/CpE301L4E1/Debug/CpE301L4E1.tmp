@@ -1,0 +1,30 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.57</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp16\CpE301L4E1\CpE301L4E1\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\avrasm\inc</DIR>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp16\CpE301L4E1\CpE301L4E1\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\avrasm\inc\m328pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp16\CpE301L4E1\CpE301L4E1\Debug\CpE301L4E1.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>CpE301L4E1.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>CpE301L4E1.map</FILE>
+  <FILE>CpE301L4E1.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <BEGIN><FILE>C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp16\CpE301L4E1\CpE301L4E1\main.asm</FILE><LINE>24</LINE></BEGIN>
+  <DELAY><FILE>C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp16\CpE301L4E1\CpE301L4E1\main.asm</FILE><LINE>30</LINE></DELAY>
+  <AGAIN><FILE>C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp16\CpE301L4E1\CpE301L4E1\main.asm</FILE><LINE>39</LINE></AGAIN>
+ </LABELS>
+</ASSEMBLER_INFO>
