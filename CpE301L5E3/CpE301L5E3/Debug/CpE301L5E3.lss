@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.57  C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp16\CpE301L5E2\CpE301L5E2\main.asm Fri Feb 26 17:20:23 2016
+AVRASM ver. 2.1.57  C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp16\CpE301L5E3\CpE301L5E3\main.asm Fri Feb 26 17:18:29 2016
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\avrasm\inc\m2560def.inc'
                  
@@ -1841,7 +1841,7 @@ AVRASM ver. 2.1.57  C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp
                  
                  ; ***** END OF FILE ******************************************************
                  
-                 ; L5E2.asm
+                 ; L5E3.asm
                  ;
                  ; Created: 2/26/2016 5:49:33 PM
                  ; Author : jmsikorski
@@ -1850,15 +1850,15 @@ AVRASM ver. 2.1.57  C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp
                  
 000000 9a25      	SBI	DDRB, 5
                  ON: 	
-000001 e14e      	LDI		R20, 0x1E
+000001 e54b      	LDI		R20, 0x5B
 000002 9340 0089 	STS		OCR1AH, R20
-000004 e845      	LDI		R20, 0x85
+000004 e84f      	LDI		R20, 0x8F
 000005 9340 0088 	STS 	OCR1AL,R20		;OCR1A = 15,624
 000007 c006      	RJMP	SET1
                  OFF:
-000008 e34d      	LDI		R20, 0x3D
+000008 e14e      	LDI		R20, 0x1E
 000009 9340 0089 	STS		OCR1AH, R20
-00000b e048      	LDI		R20, 0x08
+00000b e845      	LDI		R20, 0x85
 00000c 9340 0088 	STS		OCR1AL, R20
                  SET1:
 00000e e04d      	LDI 	R20, 0x0D 

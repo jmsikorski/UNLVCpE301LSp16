@@ -1,5 +1,5 @@
 ;
-; L5E2.asm
+; L5E3.asm
 ;
 ; Created: 2/26/2016 5:49:33 PM
 ; Author : jmsikorski
@@ -8,15 +8,15 @@
 
 	SBI	DDRB, 5
 ON: 	
-	LDI		R20, 0x1E
+	LDI		R20, 0x5B
 	STS		OCR1AH, R20
-	LDI		R20, 0x85
+	LDI		R20, 0x8F
 	STS 	OCR1AL,R20		;OCR1A = 15,624
 	RJMP	SET1
 OFF:
-	LDI		R20, 0x3D
+	LDI		R20, 0x1E
 	STS		OCR1AH, R20
-	LDI		R20, 0x08
+	LDI		R20, 0x85
 	STS		OCR1AL, R20
 SET1:
 	LDI 	R20, 0x0D 

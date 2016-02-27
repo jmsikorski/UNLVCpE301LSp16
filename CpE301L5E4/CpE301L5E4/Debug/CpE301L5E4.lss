@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.57  C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp16\CpE301L5E2\CpE301L5E2\main.asm Fri Feb 26 17:20:23 2016
+AVRASM ver. 2.1.57  C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp16\CpE301L5E4\CpE301L5E4\main.asm Fri Feb 26 17:58:37 2016
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\avrasm\inc\m2560def.inc'
                  
@@ -1841,40 +1841,47 @@ AVRASM ver. 2.1.57  C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp
                  
                  ; ***** END OF FILE ******************************************************
                  
-                 ; L5E2.asm
+                 ; L5E4.asm
                  ;
                  ; Created: 2/26/2016 5:49:33 PM
                  ; Author : jmsikorski
                  ;
                  
                  
-000000 9a25      	SBI	DDRB, 5
+000000 9a25      	SBI		DDRB, 5
+000001 9a26      	SBI		DDRB, 6
+000002 e430      	LDI		R19, 1<<6
+000003 b935      	OUT		PORTB, R19
                  ON: 	
-000001 e14e      	LDI		R20, 0x1E
-000002 9340 0089 	STS		OCR1AH, R20
-000004 e845      	LDI		R20, 0x85
-000005 9340 0088 	STS 	OCR1AL,R20		;OCR1A = 15,624
-000007 c006      	RJMP	SET1
+000004 e030      	LDI		R19, 0<<6
+000005 b935      	OUT		PORTB, R19
+000006 e74a      	LDI		R20, 0x7A
+000007 9340 0089 	STS		OCR1AH, R20
+000009 e144      	LDI		R20, 0x14
+00000a 9340 0088 	STS 	OCR1AL,R20		;OCR1A = 15,624
+00000c c008      	RJMP	SET1
                  OFF:
-000008 e34d      	LDI		R20, 0x3D
-000009 9340 0089 	STS		OCR1AH, R20
-00000b e048      	LDI		R20, 0x08
-00000c 9340 0088 	STS		OCR1AL, R20
+00000d e430      	LDI		R19, 1<<6
+00000e b935      	OUT		PORTB, R19
+00000f e14e      	LDI		R20, 0x1E
+000010 9340 0089 	STS		OCR1AH, R20
+000012 e845      	LDI		R20, 0x85
+000013 9340 0088 	STS		OCR1AL, R20
                  SET1:
-00000e e04d      	LDI 	R20, 0x0D 
-00000f 9340 0081 	STS 	TCCR1B, R20		;CTC, 256 prescaler, set on match
-000011 e440      	LDI		R20, 0x40
-000012 9340 0080 	STS		TCCR1A, R20
+000015 e04d      	LDI 	R20, 0x0D 
+000016 9340 0081 	STS 	TCCR1B, R20		;CTC, 256 prescaler, set on match
+000018 e440      	LDI		R20, 0x40
+000019 9340 0080 	STS		TCCR1A, R20
                  L1: 
-000014 b346      	IN		R20, TIFR1
-000015 ff41      	SBRS 	R20,OCF1A	;skip next instruction if OCF1A = 1
-000016 cffd      	RJMP 	L1
-000017 e002      	LDI		R16,1<<OCF1A 
-000018 9300 0016 	STS 	TIFR1,R16	;clear OCF1A
-00001a b103      	IN		R16, PINB
-00001b 7200      	ANDI	R16, 1<<5
-00001c 3000      	CPI		R16, 0
-00001d f719      	BRNE	ON				
+00001b b346      	IN		R20, TIFR1
+00001c ff41      	SBRS 	R20,OCF1A	;skip next instruction if OCF1A = 1
+00001d cffd      	RJMP 	L1
+00001e e002      	LDI		R16,1<<OCF1A 
+00001f 9300 0016 	STS 	TIFR1,R16	;clear OCF1A
+000021 b103      	IN		R16, PINB
+000022 7200      	ANDI	R16, 1<<5
+000023 3000      	CPI		R16, 0
+000024 f6f9      	BRNE	ON				
 
 
 RESOURCE USE INFORMATION
@@ -1894,10 +1901,10 @@ counted separately from r26..r31 here.
 "ATmega2560" register use summary:
 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 r5 :   0 r6 :   0 r7 :   0 
 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 r13:   0 r14:   0 r15:   0 
-r16:   5 r17:   0 r18:   0 r19:   0 r20:  14 r21:   0 r22:   0 r23:   0 
+r16:   5 r17:   0 r18:   0 r19:   6 r20:  14 r21:   0 r22:   0 r23:   0 
 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 r29:   0 r30:   0 r31:   0 
 x  :   0 y  :   0 z  :   0 
-Registers used: 2 out of 35 (5.7%)
+Registers used: 3 out of 35 (8.6%)
 
 "ATmega2560" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
@@ -1910,22 +1917,22 @@ clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
 cpi   :   1 cpse  :   0 dec   :   0 eicall:   0 eijmp :   0 elpm  :   0 
 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 
-in    :   2 inc   :   0 jmp   :   0 ld    :   0 ldd   :   0 ldi   :   7 
+in    :   2 inc   :   0 jmp   :   0 ld    :   0 ldd   :   0 ldi   :  10 
 lds   :   0 lpm   :   0 lsl   :   0 lsr   :   0 mov   :   0 movw  :   0 
 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   0 
-ori   :   0 out   :   0 pop   :   0 push  :   0 rcall :   0 ret   :   0 
+ori   :   0 out   :   3 pop   :   0 push  :   0 rcall :   0 ret   :   0 
 reti  :   0 rjmp  :   3 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
-sbi   :   1 sbic  :   0 sbis  :   0 sbiw  :   0 sbr   :   0 sbrc  :   0 
+sbi   :   2 sbic  :   0 sbis  :   0 sbiw  :   0 sbr   :   0 sbrc  :   0 
 sbrs  :   1 sec   :   0 seh   :   0 sei   :   0 sen   :   0 ser   :   0 
 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
 st    :   0 std   :   0 sts   :   7 sub   :   0 subi  :   0 swap  :   0 
 tst   :   0 wdr   :   0 
-Instructions used: 9 out of 116 (7.8%)
+Instructions used: 10 out of 116 (8.6%)
 
 "ATmega2560" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00003e     62      0     62  262144   0.0%
+[.cseg] 0x000000 0x00004c     76      0     76  262144   0.0%
 [.dseg] 0x000200 0x000200      0      0      0    8192   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 
