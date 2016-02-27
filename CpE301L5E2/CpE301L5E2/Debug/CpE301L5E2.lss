@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.57  C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp16\CpE301L5E2\CpE301L5E2\main.asm Fri Feb 26 12:19:06 2016
+AVRASM ver. 2.1.57  C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp16\CpE301L5E2\CpE301L5E2\main.asm Fri Feb 26 16:30:23 2016
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\avrasm\inc\m2560def.inc'
                  
@@ -1848,13 +1848,13 @@ AVRASM ver. 2.1.57  C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp
                  ;
                  
                  
-000000 9a21      	SBI	DDRB, 1
+000000 9a25      	SBI	DDRB, 5
                  BEGIN: 	
-000001 e34d      	LDI		R20, 0x3D
+000001 e14e      	LDI		R20, 0x1E
 000002 9340 0089 	STS		OCR1AH, R20
-000004 e048      	LDI		R20, 0x08
+000004 e845      	LDI		R20, 0x85
 000005 9340 0088 	STS 	OCR1AL,R20		;OCR1A = 15,624
-000007 e04c      	LDI 	R20, 0x0C 
+000007 e04d      	LDI 	R20, 0x0D 
 000008 9340 0081 	STS 	TCCR1B, R20		;CTC, 256 prescaler, set on match
 00000a ec40      	LDI		R20, 0xC0
 00000b 9340 0080 	STS		TCCR1A, R20
@@ -1868,7 +1868,7 @@ AVRASM ver. 2.1.57  C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp
 000014 9340 0089 	STS		OCR1AH, R20
 000016 e048      	LDI		R20, 0x08
 000017 9340 0088 	STS 	OCR1AL,R20	;OCR1A = 31248	
-000019 e04c      	LDI 	R20, 0x0C 
+000019 e04d      	LDI 	R20, 0x0D 
 00001a 9340 0081 	STS 	TCCR1B, R20		;CTC, 256 prescaler, set on match
 00001c e840      	LDI 	R20,0x80
 00001d 9340 0080 	STS 	TCCR1A,R20	;CTC, clear on match

@@ -6,13 +6,13 @@
 ;
 
 
-	SBI	DDRB, 1
+	SBI	DDRB, 5
 BEGIN: 	
-	LDI		R20, 0x3D
+	LDI		R20, 0x1E
 	STS		OCR1AH, R20
-	LDI		R20, 0x08
+	LDI		R20, 0x85
 	STS 	OCR1AL,R20		;OCR1A = 15,624
-	LDI 	R20, 0x0C 
+	LDI 	R20, 0x0D 
 	STS 	TCCR1B, R20		;CTC, 256 prescaler, set on match
 	LDI		R20, 0xC0
 	STS		TCCR1A, R20
@@ -26,7 +26,7 @@ L1:
 	STS		OCR1AH, R20
 	LDI		R20, 0x08
 	STS 	OCR1AL,R20	;OCR1A = 31248	
-	LDI 	R20, 0x0C 
+	LDI 	R20, 0x0D 
 	STS 	TCCR1B, R20		;CTC, 256 prescaler, set on match
 	LDI 	R20,0x80
 	STS 	TCCR1A,R20	;CTC, clear on match
