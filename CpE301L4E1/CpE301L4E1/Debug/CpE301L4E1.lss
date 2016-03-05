@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.57  C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp16\CpE301L4E1\CpE301L4E1\main.asm Sat Feb 27 18:46:18 2016
+AVRASM ver. 2.1.57  C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp16\CpE301L4E1\CpE301L4E1\main.asm Fri Feb 26 14:40:31 2016
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\avrasm\inc\m328pdef.inc'
                  
@@ -1004,15 +1004,15 @@ AVRASM ver. 2.1.57  C:\Users\jmsikorski\Documents\Atmel Studio\7.0\UNLVCpE301LSp
 000002 ef0f
 000003 bf0d      INITSTACK
 000004 e300      	LDI		R16, 0X30		;R16 5th and 4th bit is 1
-000005 9a55      	SBI		DDRD, 5			;Set PORTB.5 to output
-000006 9a54      	SBI		DDRD, 4
+000005 9a25      	SBI		DDRB, 5			;Set PORTB.5 to output
+000006 9a24      	SBI		DDRB, 4
 000007 e110      	LDI		R17, 0X10		;Clear R17
-000008 b91b      	OUT		PORTD, R17		;Clear PORTD
+000008 b915      	OUT		PORTB, R17		;Clear PORTB
                  
                  BEGIN:
 000009 d003      	RCALL	DELAY			;Call DELAY subroutine
 00000a 2710      	EOR		R17, R16		;XOR R17 with 0x20, inverting 5th bit 
-00000b b91b      	OUT		PORTD, R17		;Output R17
+00000b b915      	OUT		PORTB, R17		;Output R17
 00000c cffc      	RJMP	BEGIN			;Jump to BEGIN
                  
                  DELAY:

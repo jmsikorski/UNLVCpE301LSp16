@@ -16,15 +16,15 @@
 
 INITSTACK
 	LDI		R16, 0X30		;R16 5th and 4th bit is 1
-	SBI		DDRD, 5			;Set PORTB.5 to output
-	SBI		DDRD, 4
+	SBI		DDRB, 5			;Set PORTB.5 to output
+	SBI		DDRB, 4
 	LDI		R17, 0X10		;Clear R17
-	OUT		PORTD, R17		;Clear PORTD
+	OUT		PORTB, R17		;Clear PORTB
 
 BEGIN:
 	RCALL	DELAY			;Call DELAY subroutine
 	EOR		R17, R16		;XOR R17 with 0x20, inverting 5th bit 
-	OUT		PORTD, R17		;Output R17
+	OUT		PORTB, R17		;Output R17
 	RJMP	BEGIN			;Jump to BEGIN
 
 DELAY:
