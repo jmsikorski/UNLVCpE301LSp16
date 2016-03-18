@@ -11,14 +11,14 @@
 int main ()
 {
 	unsigned char i;
-	DDRB = 0x02;		//PD6 as output (OC0A)
+	DDRB = 0x01;		//PD6 as output (OC0A)
 	i = 26;
-	OCR1A = 26;			//Duty cycle = 100%
-	TCCR1A = 0xC1;		//Phase Correct PWM, inverted, N64
-	TCCR1B = 0x02;
+	OCR0A = 26;			//Duty cycle = 100%
+	TCCR0A = 0xC1;		//Phase Correct PWM, inverted, N64
+	TCCR0B = 0x02;
 	while (1)
 	{
-		OCR1A = i;
+		OCR0A = i;
 		_delay_ms(25);	//use AVR studio library delay
 		i++;
 	}

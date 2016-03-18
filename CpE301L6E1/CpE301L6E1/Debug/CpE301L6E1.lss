@@ -3,29 +3,29 @@ CpE301L6E1.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000000fc  2**0
+  0 .data         00000000  00800100  00800100  00000110  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000000a8  00000000  00000000  00000054  2**1
+  1 .text         000000bc  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  000000fc  2**0
+  2 .comment      00000030  00000000  00000000  00000110  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000012c  2**2
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000140  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000020  00000000  00000000  0000016c  2**0
+  4 .debug_aranges 00000020  00000000  00000000  00000180  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000116  00000000  00000000  0000018c  2**0
+  5 .debug_info   00000121  00000000  00000000  000001a0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000000cf  00000000  00000000  000002a2  2**0
+  6 .debug_abbrev 000000cf  00000000  00000000  000002c1  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000117  00000000  00000000  00000371  2**0
+  7 .debug_line   00000126  00000000  00000000  00000390  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000024  00000000  00000000  00000488  2**2
+  8 .debug_frame  00000024  00000000  00000000  000004b8  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    0000019b  00000000  00000000  000004ac  2**0
+  9 .debug_str    000001a4  00000000  00000000  000004dc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000021  00000000  00000000  00000647  2**0
+ 10 .debug_loc    0000001f  00000000  00000000  00000680  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000010  00000000  00000000  00000668  2**0
+ 11 .debug_ranges 00000010  00000000  00000000  0000069f  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -66,7 +66,7 @@ Disassembly of section .text:
   70:	de bf       	out	0x3e, r29	; 62
   72:	cd bf       	out	0x3d, r28	; 61
   74:	0e 94 40 00 	call	0x80	; 0x80 <main>
-  78:	0c 94 52 00 	jmp	0xa4	; 0xa4 <_exit>
+  78:	0c 94 5c 00 	jmp	0xb8	; 0xb8 <_exit>
 
 0000007c <__bad_interrupt>:
   7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -77,46 +77,59 @@ Disassembly of section .text:
 int main ()
 {
 	unsigned char i;
-	DDRD = 0x60;		//PD6 as output (OC0A)
-  80:	80 e6       	ldi	r24, 0x60	; 96
-  82:	8a b9       	out	0x0a, r24	; 10
-	i = 255;
-	OCR0A = 255;			//Duty cycle = 100%
-  84:	8f ef       	ldi	r24, 0xFF	; 255
-  86:	87 bd       	out	0x27, r24	; 39
-	TCCR0A = 0xC1;		//Phase Correct PWM, inverted, N64
-  88:	91 ec       	ldi	r25, 0xC1	; 193
-  8a:	94 bd       	out	0x24, r25	; 36
-	TCCR0B = 0x0B;
-  8c:	9b e0       	ldi	r25, 0x0B	; 11
-  8e:	95 bd       	out	0x25, r25	; 37
-	while (i != 0 )
+	DDRB = 0x02;		//PD6 as output (OC0A)
+  80:	82 e0       	ldi	r24, 0x02	; 2
+  82:	84 b9       	out	0x04, r24	; 4
+	i = 26;
+	OCR1A = 26;			//Duty cycle = 100%
+  84:	2a e1       	ldi	r18, 0x1A	; 26
+  86:	30 e0       	ldi	r19, 0x00	; 0
+  88:	30 93 89 00 	sts	0x0089, r19
+  8c:	20 93 88 00 	sts	0x0088, r18
+	TCCR1A = 0xC1;		//Phase Correct PWM, inverted, N64
+  90:	91 ec       	ldi	r25, 0xC1	; 193
+  92:	90 93 80 00 	sts	0x0080, r25
+	TCCR1B = 0x02;
+  96:	80 93 81 00 	sts	0x0081, r24
+#include <util/delay.h>
+int main ()
+{
+	unsigned char i;
+	DDRB = 0x02;		//PD6 as output (OC0A)
+	i = 26;
+  9a:	8a e1       	ldi	r24, 0x1A	; 26
+	OCR1A = 26;			//Duty cycle = 100%
+	TCCR1A = 0xC1;		//Phase Correct PWM, inverted, N64
+	TCCR1B = 0x02;
+	while (1)
 	{
-		OCR0A = i;
-  90:	87 bd       	out	0x27, r24	; 39
+		OCR1A = i;
+  9c:	e8 e8       	ldi	r30, 0x88	; 136
+  9e:	f0 e0       	ldi	r31, 0x00	; 0
+  a0:	28 2f       	mov	r18, r24
+  a2:	30 e0       	ldi	r19, 0x00	; 0
+  a4:	31 83       	std	Z+1, r19	; 0x01
+  a6:	20 83       	st	Z, r18
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
-  92:	8f e4       	ldi	r24, 0x4F	; 79
-  94:	93 ec       	ldi	r25, 0xC3	; 195
-  96:	01 97       	sbiw	r24, 0x01	; 1
-  98:	f1 f7       	brne	.-4      	; 0x96 <main+0x16>
-  9a:	00 c0       	rjmp	.+0      	; 0x9c <main+0x1c>
-  9c:	00 00       	nop
+  a8:	af e4       	ldi	r26, 0x4F	; 79
+  aa:	b3 ec       	ldi	r27, 0xC3	; 195
+  ac:	11 97       	sbiw	r26, 0x01	; 1
+  ae:	f1 f7       	brne	.-4      	; 0xac <main+0x2c>
+  b0:	00 c0       	rjmp	.+0      	; 0xb2 <main+0x32>
+  b2:	00 00       	nop
 		_delay_ms(25);	//use AVR studio library delay
 		i++;
+  b4:	8f 5f       	subi	r24, 0xFF	; 255
 	}
-	while (1)
-		DDRD = 0x60;			//wait here forever after dimming is done
-  9e:	80 e6       	ldi	r24, 0x60	; 96
-  a0:	8a b9       	out	0x0a, r24	; 10
-  a2:	fe cf       	rjmp	.-4      	; 0xa0 <main+0x20>
+  b6:	f4 cf       	rjmp	.-24     	; 0xa0 <main+0x20>
 
-000000a4 <_exit>:
-  a4:	f8 94       	cli
+000000b8 <_exit>:
+  b8:	f8 94       	cli
 
-000000a6 <__stop_program>:
-  a6:	ff cf       	rjmp	.-2      	; 0xa6 <__stop_program>
+000000ba <__stop_program>:
+  ba:	ff cf       	rjmp	.-2      	; 0xba <__stop_program>
