@@ -14,9 +14,9 @@ void usart_send(char);
 volatile char a;
 char recd = 0;
 
-ISR(USART_RX_vect)
+ISR(USART1_RX_vect)
 {
-	a = UDR0;
+	a = UDR1;
 	if(a > 64 && a < 91)
 		a += 32;
 	else if (a > 96 & a < 123)
@@ -29,19 +29,24 @@ int main(void)
     /* Replace with your application code */
 	usart_init();
 	sei();
-    while (1);
+	char a = 'A';
+    while (1)
+	{
+		a++;
+		usart_send(a);
+	}
 }
 
 void usart_init()
 {
-	UCSR0B = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0) | (1<<UMSEL00); // TX Enable, RX Enable, RX Interrupt enabled
-	UCSR0C = (1<<UCSZ01) | (1<<UCSZ00); // 8 bit data segment
-	UBRR0 = 0x33; // Baud rate
+	UCSR1B = (1<<TXEN1) | (1<<RXEN1) | (1<<RXCIE1); // TX Enable, RX Enable, RX Interrupt enabled
+	UCSR1C = (1<<UCSZ11) | (1<<UCSZ10); // 8 bit data segment
+	UBRR1 = 0x33; // Baud rate
 }
 
 void usart_send (char data)
 {
-	while (! (UCSR0A & (1<<UDRE0)));
-	UDR0 = data;
+	while (! (UCSR1A & (1<<UDRE1)));
+	UDR1 = data;
 	return;
 }
