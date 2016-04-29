@@ -7,9 +7,9 @@
 #define F_CPU 8000000UL
 #include <avr/io.h> //standard AVR header
 #include <util/delay.h> //delay header
-#define LCD_DPRT PORTD //LCD DATA PORT
-#define LCD_DDDR DDRD //LCD DATA DDR
-#define LCD_DPIN PIND //LCD DATA PIN
+#define LCD_DPRT PORTH //LCD DATA PORT
+#define LCD_DDDR DDRH //LCD DATA DDR
+#define LCD_DPIN PINH //LCD DATA PIN
 #define LCD_CPRT PORTB //LCD COMMANDS PORT
 #define LCD_CDDR DDRB //LCD COMMANDS DDR
 #define LCD_CPIN PINB //LCD COMMANDS PIN
