@@ -1,0 +1,1769 @@
+
+CpE301L9E2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000020  00800100  000007e2  00000856  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000007e2  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  00000876  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000008a8  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000068  00000000  00000000  000008e8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00001779  00000000  00000000  00000950  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000229  00000000  00000000  000020c9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000057d  00000000  00000000  000022f2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000c4  00000000  00000000  00002870  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000241  00000000  00000000  00002934  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000ed1  00000000  00000000  00002b75  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000d0  00000000  00000000  00003a46  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e2 ee       	ldi	r30, 0xE2	; 226
+  7c:	f7 e0       	ldi	r31, 0x07	; 7
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a0 32       	cpi	r26, 0x20	; 32
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 df 00 	call	0x1be	; 0x1be <main>
+  8e:	0c 94 ef 03 	jmp	0x7de	; 0x7de <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <lcdCommanda>:
+{'C','D','E','F'},
+};
+
+void lcdCommanda (unsigned char cmnd)
+{
+	LCD_DPRT = cmnd; //send cmnd to data port
+  96:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT &= ~(1<<LCD_RS); //RS = 0 for command
+  98:	28 98       	cbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+  9a:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+  9c:	2a 9a       	sbi	0x05, 2	; 5
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  9e:	82 e0       	ldi	r24, 0x02	; 2
+  a0:	8a 95       	dec	r24
+  a2:	f1 f7       	brne	.-4      	; 0xa0 <lcdCommanda+0xa>
+  a4:	00 c0       	rjmp	.+0      	; 0xa6 <lcdCommanda+0x10>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+  a6:	2a 98       	cbi	0x05, 2	; 5
+  a8:	87 ec       	ldi	r24, 0xC7	; 199
+  aa:	90 e0       	ldi	r25, 0x00	; 0
+  ac:	01 97       	sbiw	r24, 0x01	; 1
+  ae:	f1 f7       	brne	.-4      	; 0xac <lcdCommanda+0x16>
+  b0:	00 c0       	rjmp	.+0      	; 0xb2 <lcdCommanda+0x1c>
+  b2:	00 00       	nop
+  b4:	08 95       	ret
+
+000000b6 <lcdData>:
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+  b6:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+  b8:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+  ba:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+  bc:	2a 9a       	sbi	0x05, 2	; 5
+  be:	82 e0       	ldi	r24, 0x02	; 2
+  c0:	8a 95       	dec	r24
+  c2:	f1 f7       	brne	.-4      	; 0xc0 <lcdData+0xa>
+  c4:	00 c0       	rjmp	.+0      	; 0xc6 <lcdData+0x10>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+  c6:	2a 98       	cbi	0x05, 2	; 5
+  c8:	87 ec       	ldi	r24, 0xC7	; 199
+  ca:	90 e0       	ldi	r25, 0x00	; 0
+  cc:	01 97       	sbiw	r24, 0x01	; 1
+  ce:	f1 f7       	brne	.-4      	; 0xcc <lcdData+0x16>
+  d0:	00 c0       	rjmp	.+0      	; 0xd2 <lcdData+0x1c>
+  d2:	00 00       	nop
+  d4:	08 95       	ret
+
+000000d6 <lcd_init>:
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcd_init()
+{
+	LCD_DDDR = 0xFF;
+  d6:	8f ef       	ldi	r24, 0xFF	; 255
+  d8:	8a b9       	out	0x0a, r24	; 10
+	LCD_CDDR |= (1<<LCD_RS) | (1<<LCD_RW) | (1<<LCD_EN);
+  da:	84 b1       	in	r24, 0x04	; 4
+  dc:	87 60       	ori	r24, 0x07	; 7
+  de:	84 b9       	out	0x04, r24	; 4
+	LCD_CPRT &=~(1<<LCD_EN); //LCD_EN = 0
+  e0:	2a 98       	cbi	0x05, 2	; 5
+  e2:	8f e9       	ldi	r24, 0x9F	; 159
+  e4:	9f e0       	ldi	r25, 0x0F	; 15
+  e6:	01 97       	sbiw	r24, 0x01	; 1
+  e8:	f1 f7       	brne	.-4      	; 0xe6 <lcd_init+0x10>
+  ea:	00 c0       	rjmp	.+0      	; 0xec <lcd_init+0x16>
+  ec:	00 00       	nop
+{'C','D','E','F'},
+};
+
+void lcdCommanda (unsigned char cmnd)
+{
+	LCD_DPRT = cmnd; //send cmnd to data port
+  ee:	88 e3       	ldi	r24, 0x38	; 56
+  f0:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT &= ~(1<<LCD_RS); //RS = 0 for command
+  f2:	28 98       	cbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+  f4:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+  f6:	2a 9a       	sbi	0x05, 2	; 5
+  f8:	92 e0       	ldi	r25, 0x02	; 2
+  fa:	9a 95       	dec	r25
+  fc:	f1 f7       	brne	.-4      	; 0xfa <lcd_init+0x24>
+  fe:	00 c0       	rjmp	.+0      	; 0x100 <lcd_init+0x2a>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 100:	2a 98       	cbi	0x05, 2	; 5
+ 102:	87 ec       	ldi	r24, 0xC7	; 199
+ 104:	90 e0       	ldi	r25, 0x00	; 0
+ 106:	01 97       	sbiw	r24, 0x01	; 1
+ 108:	f1 f7       	brne	.-4      	; 0x106 <lcd_init+0x30>
+ 10a:	00 c0       	rjmp	.+0      	; 0x10c <lcd_init+0x36>
+ 10c:	00 00       	nop
+{'C','D','E','F'},
+};
+
+void lcdCommanda (unsigned char cmnd)
+{
+	LCD_DPRT = cmnd; //send cmnd to data port
+ 10e:	8e e0       	ldi	r24, 0x0E	; 14
+ 110:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT &= ~(1<<LCD_RS); //RS = 0 for command
+ 112:	28 98       	cbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 114:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 116:	2a 9a       	sbi	0x05, 2	; 5
+ 118:	92 e0       	ldi	r25, 0x02	; 2
+ 11a:	9a 95       	dec	r25
+ 11c:	f1 f7       	brne	.-4      	; 0x11a <lcd_init+0x44>
+ 11e:	00 c0       	rjmp	.+0      	; 0x120 <lcd_init+0x4a>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 120:	2a 98       	cbi	0x05, 2	; 5
+ 122:	87 ec       	ldi	r24, 0xC7	; 199
+ 124:	90 e0       	ldi	r25, 0x00	; 0
+ 126:	01 97       	sbiw	r24, 0x01	; 1
+ 128:	f1 f7       	brne	.-4      	; 0x126 <lcd_init+0x50>
+ 12a:	00 c0       	rjmp	.+0      	; 0x12c <lcd_init+0x56>
+ 12c:	00 00       	nop
+{'C','D','E','F'},
+};
+
+void lcdCommanda (unsigned char cmnd)
+{
+	LCD_DPRT = cmnd; //send cmnd to data port
+ 12e:	81 e0       	ldi	r24, 0x01	; 1
+ 130:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT &= ~(1<<LCD_RS); //RS = 0 for command
+ 132:	28 98       	cbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 134:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 136:	2a 9a       	sbi	0x05, 2	; 5
+ 138:	92 e0       	ldi	r25, 0x02	; 2
+ 13a:	9a 95       	dec	r25
+ 13c:	f1 f7       	brne	.-4      	; 0x13a <lcd_init+0x64>
+ 13e:	00 c0       	rjmp	.+0      	; 0x140 <lcd_init+0x6a>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 140:	2a 98       	cbi	0x05, 2	; 5
+ 142:	87 ec       	ldi	r24, 0xC7	; 199
+ 144:	90 e0       	ldi	r25, 0x00	; 0
+ 146:	01 97       	sbiw	r24, 0x01	; 1
+ 148:	f1 f7       	brne	.-4      	; 0x146 <lcd_init+0x70>
+ 14a:	00 c0       	rjmp	.+0      	; 0x14c <lcd_init+0x76>
+ 14c:	00 00       	nop
+ 14e:	8f e9       	ldi	r24, 0x9F	; 159
+ 150:	9f e0       	ldi	r25, 0x0F	; 15
+ 152:	01 97       	sbiw	r24, 0x01	; 1
+ 154:	f1 f7       	brne	.-4      	; 0x152 <lcd_init+0x7c>
+ 156:	00 c0       	rjmp	.+0      	; 0x158 <lcd_init+0x82>
+ 158:	00 00       	nop
+{'C','D','E','F'},
+};
+
+void lcdCommanda (unsigned char cmnd)
+{
+	LCD_DPRT = cmnd; //send cmnd to data port
+ 15a:	86 e0       	ldi	r24, 0x06	; 6
+ 15c:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT &= ~(1<<LCD_RS); //RS = 0 for command
+ 15e:	28 98       	cbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 160:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 162:	2a 9a       	sbi	0x05, 2	; 5
+ 164:	92 e0       	ldi	r25, 0x02	; 2
+ 166:	9a 95       	dec	r25
+ 168:	f1 f7       	brne	.-4      	; 0x166 <lcd_init+0x90>
+ 16a:	00 c0       	rjmp	.+0      	; 0x16c <lcd_init+0x96>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 16c:	2a 98       	cbi	0x05, 2	; 5
+ 16e:	87 ec       	ldi	r24, 0xC7	; 199
+ 170:	90 e0       	ldi	r25, 0x00	; 0
+ 172:	01 97       	sbiw	r24, 0x01	; 1
+ 174:	f1 f7       	brne	.-4      	; 0x172 <lcd_init+0x9c>
+ 176:	00 c0       	rjmp	.+0      	; 0x178 <lcd_init+0xa2>
+ 178:	00 00       	nop
+ 17a:	08 95       	ret
+
+0000017c <get_key_pin>:
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 17c:	76 b1       	in	r23, 0x06	; 6
+ 17e:	26 b1       	in	r18, 0x06	; 6
+ 180:	66 b1       	in	r22, 0x06	; 6
+ 182:	56 b1       	in	r21, 0x06	; 6
+ 184:	46 b1       	in	r20, 0x06	; 6
+ 186:	36 b1       	in	r19, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 188:	83 b1       	in	r24, 0x03	; 3
+ 18a:	e3 b1       	in	r30, 0x03	; 3
+ 18c:	e8 70       	andi	r30, 0x08	; 8
+ 18e:	80 71       	andi	r24, 0x10	; 16
+ 190:	90 e0       	ldi	r25, 0x00	; 0
+ 192:	8e 2b       	or	r24, r30
+ 194:	88 0f       	add	r24, r24
+ 196:	99 1f       	adc	r25, r25
+ 198:	88 0f       	add	r24, r24
+ 19a:	99 1f       	adc	r25, r25
+ 19c:	88 0f       	add	r24, r24
+ 19e:	99 1f       	adc	r25, r25
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 1a0:	e2 2f       	mov	r30, r18
+ 1a2:	e2 70       	andi	r30, 0x02	; 2
+ 1a4:	27 2f       	mov	r18, r23
+ 1a6:	21 70       	andi	r18, 0x01	; 1
+ 1a8:	2e 2b       	or	r18, r30
+ 1aa:	64 70       	andi	r22, 0x04	; 4
+ 1ac:	26 2b       	or	r18, r22
+ 1ae:	58 70       	andi	r21, 0x08	; 8
+ 1b0:	25 2b       	or	r18, r21
+ 1b2:	40 71       	andi	r20, 0x10	; 16
+ 1b4:	24 2b       	or	r18, r20
+ 1b6:	30 72       	andi	r19, 0x20	; 32
+ 1b8:	23 2b       	or	r18, r19
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+	return p;
+}
+ 1ba:	82 2b       	or	r24, r18
+ 1bc:	08 95       	ret
+
+000001be <main>:
+	PORTB |= ((0x40 & p)>>3) | ((0x80 & p)>>3);
+}
+
+void set_key_ddr(unsigned char p)
+{
+	DDRC |= (0x01 & p) | (0x02 & p) | (0x04 & p) | (0x08 & p) | (0x10 & p) | (0x20 & p);
+ 1be:	87 b1       	in	r24, 0x07	; 7
+ 1c0:	80 63       	ori	r24, 0x30	; 48
+ 1c2:	87 b9       	out	0x07, r24	; 7
+	DDRB |= ((0x40 & p)>>3) | ((0x80 & p)>>3);
+ 1c4:	84 b1       	in	r24, 0x04	; 4
+ 1c6:	88 61       	ori	r24, 0x18	; 24
+ 1c8:	84 b9       	out	0x04, r24	; 4
+	}
+}
+
+void set_key_prt(unsigned char p)
+{
+	PORTC |= (0x01 & p) | (0x02 & p) | (0x04 & p) | (0x08 & p) | (0x10 & p) | (0x20 & p);
+ 1ca:	88 b1       	in	r24, 0x08	; 8
+ 1cc:	8f 63       	ori	r24, 0x3F	; 63
+ 1ce:	88 b9       	out	0x08, r24	; 8
+	PORTB |= ((0x40 & p)>>3) | ((0x80 & p)>>3);
+ 1d0:	85 b1       	in	r24, 0x05	; 5
+ 1d2:	88 61       	ori	r24, 0x18	; 24
+ 1d4:	85 b9       	out	0x05, r24	; 5
+{
+	unsigned char rowloc;
+	char data, colloc;
+	set_key_ddr(0xF0);
+	set_key_prt(0xFF);
+	lcd_init();
+ 1d6:	0e 94 6b 00 	call	0xd6	; 0xd6 <lcd_init>
+}
+
+void lcd_gotoxy(unsigned char x, unsigned char y)
+{
+	unsigned char firstCharAdr[] = {0x80, 0xC0};
+	lcdCommanda(firstCharAdr[y-1] + x -1);
+ 1da:	80 e8       	ldi	r24, 0x80	; 128
+ 1dc:	0e 94 4b 00 	call	0x96	; 0x96 <lcdCommanda>
+ 1e0:	87 ec       	ldi	r24, 0xC7	; 199
+ 1e2:	90 e0       	ldi	r25, 0x00	; 0
+ 1e4:	01 97       	sbiw	r24, 0x01	; 1
+ 1e6:	f1 f7       	brne	.-4      	; 0x1e4 <main+0x26>
+ 1e8:	00 c0       	rjmp	.+0      	; 0x1ea <main+0x2c>
+ 1ea:	00 00       	nop
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 1ec:	d1 e3       	ldi	r29, 0x31	; 49
+ 1ee:	72 e3       	ldi	r23, 0x32	; 50
+ 1f0:	e7 2e       	mov	r14, r23
+ 1f2:	e3 e3       	ldi	r30, 0x33	; 51
+ 1f4:	fe 2e       	mov	r15, r30
+			set_key_prt(0xBF); //ground row 1
+			lcdData(get_key_pin());
+			colloc = (get_key_pin() & 0x0F); //read the columns
+			if(colloc != 0x0F) //column detected
+			{
+				rowloc = 2; //save row location
+ 1f6:	02 e0       	ldi	r16, 0x02	; 2
+{'C','D','E','F'},
+};
+
+void lcdCommanda (unsigned char cmnd)
+{
+	LCD_DPRT = cmnd; //send cmnd to data port
+ 1f8:	10 ec       	ldi	r17, 0xC0	; 192
+	DDRB |= ((0x40 & p)>>3) | ((0x80 & p)>>3);
+}
+
+void and_key_prt(unsigned char p)
+{
+	PORTC &= (0x01 & p) | (0x02 & p) | (0x04 & p) | (0x08 & p) | (0x10 & p) | (0x20 & p);
+ 1fa:	88 b1       	in	r24, 0x08	; 8
+ 1fc:	8f 70       	andi	r24, 0x0F	; 15
+ 1fe:	88 b9       	out	0x08, r24	; 8
+	PORTB &= ((0x40 & p)>>3) | ((0x80 & p)>>3);
+ 200:	85 b1       	in	r24, 0x05	; 5
+ 202:	15 b8       	out	0x05, r1	; 5
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 204:	36 b1       	in	r19, 0x06	; 6
+ 206:	86 b1       	in	r24, 0x06	; 6
+ 208:	26 b1       	in	r18, 0x06	; 6
+ 20a:	96 b1       	in	r25, 0x06	; 6
+ 20c:	46 b1       	in	r20, 0x06	; 6
+ 20e:	46 b1       	in	r20, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 210:	43 b1       	in	r20, 0x03	; 3
+ 212:	43 b1       	in	r20, 0x03	; 3
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 214:	48 2f       	mov	r20, r24
+ 216:	42 70       	andi	r20, 0x02	; 2
+ 218:	83 2f       	mov	r24, r19
+ 21a:	81 70       	andi	r24, 0x01	; 1
+ 21c:	84 2b       	or	r24, r20
+ 21e:	24 70       	andi	r18, 0x04	; 4
+ 220:	82 2b       	or	r24, r18
+ 222:	98 70       	andi	r25, 0x08	; 8
+	while(1)
+	{
+		do
+		{
+			and_key_prt(0x0F); //ground all rows at once
+			colloc = (get_key_pin() & 0x0F); //read the columns
+ 224:	89 2b       	or	r24, r25
+		} while (colloc != 0x0F); //check until all keys released
+ 226:	8f 30       	cpi	r24, 0x0F	; 15
+ 228:	41 f7       	brne	.-48     	; 0x1fa <main+0x3c>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 22a:	9f e7       	ldi	r25, 0x7F	; 127
+ 22c:	e8 e3       	ldi	r30, 0x38	; 56
+ 22e:	f1 e0       	ldi	r31, 0x01	; 1
+ 230:	91 50       	subi	r25, 0x01	; 1
+ 232:	e0 40       	sbci	r30, 0x00	; 0
+ 234:	f0 40       	sbci	r31, 0x00	; 0
+ 236:	e1 f7       	brne	.-8      	; 0x230 <main+0x72>
+ 238:	00 c0       	rjmp	.+0      	; 0x23a <main+0x7c>
+ 23a:	00 00       	nop
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 23c:	36 b1       	in	r19, 0x06	; 6
+ 23e:	86 b1       	in	r24, 0x06	; 6
+ 240:	26 b1       	in	r18, 0x06	; 6
+ 242:	96 b1       	in	r25, 0x06	; 6
+ 244:	46 b1       	in	r20, 0x06	; 6
+ 246:	46 b1       	in	r20, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 248:	43 b1       	in	r20, 0x03	; 3
+ 24a:	43 b1       	in	r20, 0x03	; 3
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 24c:	48 2f       	mov	r20, r24
+ 24e:	42 70       	andi	r20, 0x02	; 2
+ 250:	83 2f       	mov	r24, r19
+ 252:	81 70       	andi	r24, 0x01	; 1
+ 254:	84 2b       	or	r24, r20
+ 256:	24 70       	andi	r18, 0x04	; 4
+ 258:	82 2b       	or	r24, r18
+ 25a:	98 70       	andi	r25, 0x08	; 8
+		do
+		{
+			do
+			{
+				_delay_ms(50); //call delay
+				colloc = (get_key_pin() & 0x0F); //see if any key is pressed
+ 25c:	89 2b       	or	r24, r25
+			} while (colloc == 0x0F); //keep checking for key press
+ 25e:	8f 30       	cpi	r24, 0x0F	; 15
+ 260:	21 f3       	breq	.-56     	; 0x22a <main+0x6c>
+ 262:	2f e7       	ldi	r18, 0x7F	; 127
+ 264:	88 e3       	ldi	r24, 0x38	; 56
+ 266:	91 e0       	ldi	r25, 0x01	; 1
+ 268:	21 50       	subi	r18, 0x01	; 1
+ 26a:	80 40       	sbci	r24, 0x00	; 0
+ 26c:	90 40       	sbci	r25, 0x00	; 0
+ 26e:	e1 f7       	brne	.-8      	; 0x268 <main+0xaa>
+ 270:	00 c0       	rjmp	.+0      	; 0x272 <main+0xb4>
+ 272:	00 00       	nop
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 274:	36 b1       	in	r19, 0x06	; 6
+ 276:	86 b1       	in	r24, 0x06	; 6
+ 278:	26 b1       	in	r18, 0x06	; 6
+ 27a:	96 b1       	in	r25, 0x06	; 6
+ 27c:	46 b1       	in	r20, 0x06	; 6
+ 27e:	46 b1       	in	r20, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 280:	43 b1       	in	r20, 0x03	; 3
+ 282:	43 b1       	in	r20, 0x03	; 3
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 284:	48 2f       	mov	r20, r24
+ 286:	42 70       	andi	r20, 0x02	; 2
+ 288:	83 2f       	mov	r24, r19
+ 28a:	81 70       	andi	r24, 0x01	; 1
+ 28c:	84 2b       	or	r24, r20
+ 28e:	24 70       	andi	r18, 0x04	; 4
+ 290:	82 2b       	or	r24, r18
+ 292:	98 70       	andi	r25, 0x08	; 8
+			{
+				_delay_ms(50); //call delay
+				colloc = (get_key_pin() & 0x0F); //see if any key is pressed
+			} while (colloc == 0x0F); //keep checking for key press
+			_delay_ms(50); //call delay for debounce
+			colloc = (get_key_pin() & 0x0F); //read columns
+ 294:	89 2b       	or	r24, r25
+		} while (colloc == 0x0F); //wait for key press
+ 296:	8f 30       	cpi	r24, 0x0F	; 15
+ 298:	41 f2       	breq	.-112    	; 0x22a <main+0x6c>
+	}
+}
+
+void set_key_prt(unsigned char p)
+{
+	PORTC |= (0x01 & p) | (0x02 & p) | (0x04 & p) | (0x08 & p) | (0x10 & p) | (0x20 & p);
+ 29a:	88 b1       	in	r24, 0x08	; 8
+ 29c:	8f 62       	ori	r24, 0x2F	; 47
+ 29e:	88 b9       	out	0x08, r24	; 8
+	PORTB |= ((0x40 & p)>>3) | ((0x80 & p)>>3);
+ 2a0:	85 b1       	in	r24, 0x05	; 5
+ 2a2:	88 61       	ori	r24, 0x18	; 24
+ 2a4:	85 b9       	out	0x05, r24	; 5
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 2a6:	26 b1       	in	r18, 0x06	; 6
+ 2a8:	36 b1       	in	r19, 0x06	; 6
+ 2aa:	96 b1       	in	r25, 0x06	; 6
+ 2ac:	86 b1       	in	r24, 0x06	; 6
+ 2ae:	46 b1       	in	r20, 0x06	; 6
+ 2b0:	46 b1       	in	r20, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 2b2:	43 b1       	in	r20, 0x03	; 3
+ 2b4:	43 b1       	in	r20, 0x03	; 3
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 2b6:	32 70       	andi	r19, 0x02	; 2
+ 2b8:	21 70       	andi	r18, 0x01	; 1
+ 2ba:	23 2b       	or	r18, r19
+ 2bc:	94 70       	andi	r25, 0x04	; 4
+ 2be:	92 2b       	or	r25, r18
+ 2c0:	88 70       	andi	r24, 0x08	; 8
+			_delay_ms(50); //call delay for debounce
+			colloc = (get_key_pin() & 0x0F); //read columns
+		} while (colloc == 0x0F); //wait for key press
+
+		set_key_prt(0xEF);
+		lcdData(get_key_pin() & 0x0F);
+ 2c2:	89 2b       	or	r24, r25
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 2c4:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 2c6:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 2c8:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 2ca:	2a 9a       	sbi	0x05, 2	; 5
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 2cc:	e2 e0       	ldi	r30, 0x02	; 2
+ 2ce:	ea 95       	dec	r30
+ 2d0:	f1 f7       	brne	.-4      	; 0x2ce <main+0x110>
+ 2d2:	00 c0       	rjmp	.+0      	; 0x2d4 <main+0x116>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 2d4:	2a 98       	cbi	0x05, 2	; 5
+ 2d6:	87 ec       	ldi	r24, 0xC7	; 199
+ 2d8:	90 e0       	ldi	r25, 0x00	; 0
+ 2da:	01 97       	sbiw	r24, 0x01	; 1
+ 2dc:	f1 f7       	brne	.-4      	; 0x2da <main+0x11c>
+ 2de:	00 c0       	rjmp	.+0      	; 0x2e0 <main+0x122>
+ 2e0:	00 00       	nop
+	}
+}
+
+void set_key_prt(unsigned char p)
+{
+	PORTC |= (0x01 & p) | (0x02 & p) | (0x04 & p) | (0x08 & p) | (0x10 & p) | (0x20 & p);
+ 2e2:	88 b1       	in	r24, 0x08	; 8
+ 2e4:	8f 61       	ori	r24, 0x1F	; 31
+ 2e6:	88 b9       	out	0x08, r24	; 8
+	PORTB |= ((0x40 & p)>>3) | ((0x80 & p)>>3);
+ 2e8:	85 b1       	in	r24, 0x05	; 5
+ 2ea:	88 61       	ori	r24, 0x18	; 24
+ 2ec:	85 b9       	out	0x05, r24	; 5
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 2ee:	26 b1       	in	r18, 0x06	; 6
+ 2f0:	36 b1       	in	r19, 0x06	; 6
+ 2f2:	96 b1       	in	r25, 0x06	; 6
+ 2f4:	86 b1       	in	r24, 0x06	; 6
+ 2f6:	46 b1       	in	r20, 0x06	; 6
+ 2f8:	46 b1       	in	r20, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 2fa:	43 b1       	in	r20, 0x03	; 3
+ 2fc:	43 b1       	in	r20, 0x03	; 3
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 2fe:	32 70       	andi	r19, 0x02	; 2
+ 300:	21 70       	andi	r18, 0x01	; 1
+ 302:	23 2b       	or	r18, r19
+ 304:	94 70       	andi	r25, 0x04	; 4
+ 306:	92 2b       	or	r25, r18
+ 308:	88 70       	andi	r24, 0x08	; 8
+		} while (colloc == 0x0F); //wait for key press
+
+		set_key_prt(0xEF);
+		lcdData(get_key_pin() & 0x0F);
+		set_key_prt(0xDF);
+		lcdData(get_key_pin() & 0x0F);
+ 30a:	89 2b       	or	r24, r25
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 30c:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 30e:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 310:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 312:	2a 9a       	sbi	0x05, 2	; 5
+ 314:	92 e0       	ldi	r25, 0x02	; 2
+ 316:	9a 95       	dec	r25
+ 318:	f1 f7       	brne	.-4      	; 0x316 <main+0x158>
+ 31a:	00 c0       	rjmp	.+0      	; 0x31c <main+0x15e>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 31c:	2a 98       	cbi	0x05, 2	; 5
+ 31e:	e7 ec       	ldi	r30, 0xC7	; 199
+ 320:	f0 e0       	ldi	r31, 0x00	; 0
+ 322:	31 97       	sbiw	r30, 0x01	; 1
+ 324:	f1 f7       	brne	.-4      	; 0x322 <main+0x164>
+ 326:	00 c0       	rjmp	.+0      	; 0x328 <main+0x16a>
+ 328:	00 00       	nop
+	}
+}
+
+void set_key_prt(unsigned char p)
+{
+	PORTC |= (0x01 & p) | (0x02 & p) | (0x04 & p) | (0x08 & p) | (0x10 & p) | (0x20 & p);
+ 32a:	88 b1       	in	r24, 0x08	; 8
+ 32c:	8f 63       	ori	r24, 0x3F	; 63
+ 32e:	88 b9       	out	0x08, r24	; 8
+	PORTB |= ((0x40 & p)>>3) | ((0x80 & p)>>3);
+ 330:	2c 9a       	sbi	0x05, 4	; 5
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 332:	26 b1       	in	r18, 0x06	; 6
+ 334:	36 b1       	in	r19, 0x06	; 6
+ 336:	96 b1       	in	r25, 0x06	; 6
+ 338:	86 b1       	in	r24, 0x06	; 6
+ 33a:	46 b1       	in	r20, 0x06	; 6
+ 33c:	46 b1       	in	r20, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 33e:	43 b1       	in	r20, 0x03	; 3
+ 340:	43 b1       	in	r20, 0x03	; 3
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 342:	32 70       	andi	r19, 0x02	; 2
+ 344:	21 70       	andi	r18, 0x01	; 1
+ 346:	23 2b       	or	r18, r19
+ 348:	94 70       	andi	r25, 0x04	; 4
+ 34a:	92 2b       	or	r25, r18
+ 34c:	88 70       	andi	r24, 0x08	; 8
+		set_key_prt(0xEF);
+		lcdData(get_key_pin() & 0x0F);
+		set_key_prt(0xDF);
+		lcdData(get_key_pin() & 0x0F);
+		set_key_prt(0xBF);
+		lcdData(get_key_pin() & 0x0F);
+ 34e:	89 2b       	or	r24, r25
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 350:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 352:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 354:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 356:	2a 9a       	sbi	0x05, 2	; 5
+ 358:	f2 e0       	ldi	r31, 0x02	; 2
+ 35a:	fa 95       	dec	r31
+ 35c:	f1 f7       	brne	.-4      	; 0x35a <main+0x19c>
+ 35e:	00 c0       	rjmp	.+0      	; 0x360 <main+0x1a2>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 360:	2a 98       	cbi	0x05, 2	; 5
+ 362:	87 ec       	ldi	r24, 0xC7	; 199
+ 364:	90 e0       	ldi	r25, 0x00	; 0
+ 366:	01 97       	sbiw	r24, 0x01	; 1
+ 368:	f1 f7       	brne	.-4      	; 0x366 <main+0x1a8>
+ 36a:	00 c0       	rjmp	.+0      	; 0x36c <main+0x1ae>
+ 36c:	00 00       	nop
+	}
+}
+
+void set_key_prt(unsigned char p)
+{
+	PORTC |= (0x01 & p) | (0x02 & p) | (0x04 & p) | (0x08 & p) | (0x10 & p) | (0x20 & p);
+ 36e:	88 b1       	in	r24, 0x08	; 8
+ 370:	8f 63       	ori	r24, 0x3F	; 63
+ 372:	88 b9       	out	0x08, r24	; 8
+	PORTB |= ((0x40 & p)>>3) | ((0x80 & p)>>3);
+ 374:	2b 9a       	sbi	0x05, 3	; 5
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 376:	26 b1       	in	r18, 0x06	; 6
+ 378:	36 b1       	in	r19, 0x06	; 6
+ 37a:	96 b1       	in	r25, 0x06	; 6
+ 37c:	86 b1       	in	r24, 0x06	; 6
+ 37e:	46 b1       	in	r20, 0x06	; 6
+ 380:	46 b1       	in	r20, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 382:	43 b1       	in	r20, 0x03	; 3
+ 384:	43 b1       	in	r20, 0x03	; 3
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 386:	32 70       	andi	r19, 0x02	; 2
+ 388:	21 70       	andi	r18, 0x01	; 1
+ 38a:	23 2b       	or	r18, r19
+ 38c:	94 70       	andi	r25, 0x04	; 4
+ 38e:	92 2b       	or	r25, r18
+ 390:	88 70       	andi	r24, 0x08	; 8
+		set_key_prt(0xDF);
+		lcdData(get_key_pin() & 0x0F);
+		set_key_prt(0xBF);
+		lcdData(get_key_pin() & 0x0F);
+		set_key_prt(0x7F);
+		lcdData(get_key_pin() & 0x0F);
+ 392:	89 2b       	or	r24, r25
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 394:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 396:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 398:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 39a:	2a 9a       	sbi	0x05, 2	; 5
+ 39c:	92 e0       	ldi	r25, 0x02	; 2
+ 39e:	9a 95       	dec	r25
+ 3a0:	f1 f7       	brne	.-4      	; 0x39e <main+0x1e0>
+ 3a2:	00 c0       	rjmp	.+0      	; 0x3a4 <main+0x1e6>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 3a4:	2a 98       	cbi	0x05, 2	; 5
+ 3a6:	e7 ec       	ldi	r30, 0xC7	; 199
+ 3a8:	f0 e0       	ldi	r31, 0x00	; 0
+ 3aa:	31 97       	sbiw	r30, 0x01	; 1
+ 3ac:	f1 f7       	brne	.-4      	; 0x3aa <main+0x1ec>
+ 3ae:	00 c0       	rjmp	.+0      	; 0x3b0 <main+0x1f2>
+ 3b0:	00 00       	nop
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 3b2:	db b9       	out	0x0b, r29	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 3b4:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 3b6:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 3b8:	2a 9a       	sbi	0x05, 2	; 5
+ 3ba:	f2 e0       	ldi	r31, 0x02	; 2
+ 3bc:	fa 95       	dec	r31
+ 3be:	f1 f7       	brne	.-4      	; 0x3bc <main+0x1fe>
+ 3c0:	00 c0       	rjmp	.+0      	; 0x3c2 <main+0x204>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 3c2:	2a 98       	cbi	0x05, 2	; 5
+ 3c4:	87 ec       	ldi	r24, 0xC7	; 199
+ 3c6:	90 e0       	ldi	r25, 0x00	; 0
+ 3c8:	01 97       	sbiw	r24, 0x01	; 1
+ 3ca:	f1 f7       	brne	.-4      	; 0x3c8 <main+0x20a>
+ 3cc:	00 c0       	rjmp	.+0      	; 0x3ce <main+0x210>
+ 3ce:	00 00       	nop
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 3d0:	e6 b1       	in	r30, 0x06	; 6
+ 3d2:	f6 b1       	in	r31, 0x06	; 6
+ 3d4:	76 b1       	in	r23, 0x06	; 6
+ 3d6:	46 b1       	in	r20, 0x06	; 6
+ 3d8:	36 b1       	in	r19, 0x06	; 6
+ 3da:	26 b1       	in	r18, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 3dc:	83 b1       	in	r24, 0x03	; 3
+ 3de:	a3 b1       	in	r26, 0x03	; 3
+ 3e0:	a8 70       	andi	r26, 0x08	; 8
+ 3e2:	80 71       	andi	r24, 0x10	; 16
+ 3e4:	90 e0       	ldi	r25, 0x00	; 0
+ 3e6:	8a 2b       	or	r24, r26
+ 3e8:	88 0f       	add	r24, r24
+ 3ea:	99 1f       	adc	r25, r25
+ 3ec:	88 0f       	add	r24, r24
+ 3ee:	99 1f       	adc	r25, r25
+ 3f0:	88 0f       	add	r24, r24
+ 3f2:	99 1f       	adc	r25, r25
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 3f4:	f2 70       	andi	r31, 0x02	; 2
+ 3f6:	e1 70       	andi	r30, 0x01	; 1
+ 3f8:	ef 2b       	or	r30, r31
+ 3fa:	74 70       	andi	r23, 0x04	; 4
+ 3fc:	7e 2b       	or	r23, r30
+ 3fe:	48 70       	andi	r20, 0x08	; 8
+ 400:	47 2b       	or	r20, r23
+ 402:	30 71       	andi	r19, 0x10	; 16
+ 404:	34 2b       	or	r19, r20
+ 406:	20 72       	andi	r18, 0x20	; 32
+ 408:	23 2b       	or	r18, r19
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 40a:	82 2b       	or	r24, r18
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 40c:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 40e:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 410:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 412:	2a 9a       	sbi	0x05, 2	; 5
+ 414:	92 e0       	ldi	r25, 0x02	; 2
+ 416:	9a 95       	dec	r25
+ 418:	f1 f7       	brne	.-4      	; 0x416 <main+0x258>
+ 41a:	00 c0       	rjmp	.+0      	; 0x41c <main+0x25e>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 41c:	2a 98       	cbi	0x05, 2	; 5
+ 41e:	e7 ec       	ldi	r30, 0xC7	; 199
+ 420:	f0 e0       	ldi	r31, 0x00	; 0
+ 422:	31 97       	sbiw	r30, 0x01	; 1
+ 424:	f1 f7       	brne	.-4      	; 0x422 <main+0x264>
+ 426:	00 c0       	rjmp	.+0      	; 0x428 <main+0x26a>
+ 428:	00 00       	nop
+	DDRB |= ((0x40 & p)>>3) | ((0x80 & p)>>3);
+}
+
+void and_key_prt(unsigned char p)
+{
+	PORTC &= (0x01 & p) | (0x02 & p) | (0x04 & p) | (0x08 & p) | (0x10 & p) | (0x20 & p);
+ 42a:	88 b1       	in	r24, 0x08	; 8
+ 42c:	8f 72       	andi	r24, 0x2F	; 47
+ 42e:	88 b9       	out	0x08, r24	; 8
+	PORTB &= ((0x40 & p)>>3) | ((0x80 & p)>>3);
+ 430:	85 b1       	in	r24, 0x05	; 5
+ 432:	88 71       	andi	r24, 0x18	; 24
+ 434:	85 b9       	out	0x05, r24	; 5
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 436:	e6 b1       	in	r30, 0x06	; 6
+ 438:	f6 b1       	in	r31, 0x06	; 6
+ 43a:	76 b1       	in	r23, 0x06	; 6
+ 43c:	46 b1       	in	r20, 0x06	; 6
+ 43e:	36 b1       	in	r19, 0x06	; 6
+ 440:	26 b1       	in	r18, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 442:	83 b1       	in	r24, 0x03	; 3
+ 444:	a3 b1       	in	r26, 0x03	; 3
+ 446:	a8 70       	andi	r26, 0x08	; 8
+ 448:	80 71       	andi	r24, 0x10	; 16
+ 44a:	90 e0       	ldi	r25, 0x00	; 0
+ 44c:	8a 2b       	or	r24, r26
+ 44e:	88 0f       	add	r24, r24
+ 450:	99 1f       	adc	r25, r25
+ 452:	88 0f       	add	r24, r24
+ 454:	99 1f       	adc	r25, r25
+ 456:	88 0f       	add	r24, r24
+ 458:	99 1f       	adc	r25, r25
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 45a:	f2 70       	andi	r31, 0x02	; 2
+ 45c:	e1 70       	andi	r30, 0x01	; 1
+ 45e:	ef 2b       	or	r30, r31
+ 460:	74 70       	andi	r23, 0x04	; 4
+ 462:	7e 2b       	or	r23, r30
+ 464:	48 70       	andi	r20, 0x08	; 8
+ 466:	47 2b       	or	r20, r23
+ 468:	30 71       	andi	r19, 0x10	; 16
+ 46a:	34 2b       	or	r19, r20
+ 46c:	20 72       	andi	r18, 0x20	; 32
+ 46e:	23 2b       	or	r18, r19
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 470:	82 2b       	or	r24, r18
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 472:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 474:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 476:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 478:	2a 9a       	sbi	0x05, 2	; 5
+ 47a:	f2 e0       	ldi	r31, 0x02	; 2
+ 47c:	fa 95       	dec	r31
+ 47e:	f1 f7       	brne	.-4      	; 0x47c <main+0x2be>
+ 480:	00 c0       	rjmp	.+0      	; 0x482 <main+0x2c4>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 482:	2a 98       	cbi	0x05, 2	; 5
+ 484:	87 ec       	ldi	r24, 0xC7	; 199
+ 486:	90 e0       	ldi	r25, 0x00	; 0
+ 488:	01 97       	sbiw	r24, 0x01	; 1
+ 48a:	f1 f7       	brne	.-4      	; 0x488 <main+0x2ca>
+ 48c:	00 c0       	rjmp	.+0      	; 0x48e <main+0x2d0>
+ 48e:	00 00       	nop
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 490:	26 b1       	in	r18, 0x06	; 6
+ 492:	36 b1       	in	r19, 0x06	; 6
+ 494:	96 b1       	in	r25, 0x06	; 6
+ 496:	86 b1       	in	r24, 0x06	; 6
+ 498:	46 b1       	in	r20, 0x06	; 6
+ 49a:	46 b1       	in	r20, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 49c:	43 b1       	in	r20, 0x03	; 3
+ 49e:	43 b1       	in	r20, 0x03	; 3
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 4a0:	32 70       	andi	r19, 0x02	; 2
+ 4a2:	21 70       	andi	r18, 0x01	; 1
+ 4a4:	23 2b       	or	r18, r19
+ 4a6:	94 70       	andi	r25, 0x04	; 4
+ 4a8:	92 2b       	or	r25, r18
+ 4aa:	88 70       	andi	r24, 0x08	; 8
+		{
+			lcdData('1');
+			lcdData(get_key_pin());
+			and_key_prt(0xEF); //ground row 1
+			lcdData(get_key_pin());
+			colloc = (get_key_pin() & 0x0F); //read the columns
+ 4ac:	89 2b       	or	r24, r25
+			if (colloc != 0x0F) //column detected
+ 4ae:	8f 30       	cpi	r24, 0x0F	; 15
+ 4b0:	09 f4       	brne	.+2      	; 0x4b4 <main+0x2f6>
+ 4b2:	74 c0       	rjmp	.+232    	; 0x59c <main+0x3de>
+ 4b4:	80 e0       	ldi	r24, 0x00	; 0
+ 4b6:	90 e0       	ldi	r25, 0x00	; 0
+			{
+				rowloc = 0; //save row location
+ 4b8:	c0 e0       	ldi	r28, 0x00	; 0
+		else if(colloc == 0xD0)
+		data = (keypad[rowloc][1]);
+		else if(colloc == 0xB0)
+		data = (keypad[rowloc][2]);
+		else
+		data = (keypad[rowloc][3]);
+ 4ba:	88 0f       	add	r24, r24
+ 4bc:	99 1f       	adc	r25, r25
+ 4be:	88 0f       	add	r24, r24
+ 4c0:	99 1f       	adc	r25, r25
+ 4c2:	fc 01       	movw	r30, r24
+ 4c4:	e0 50       	subi	r30, 0x00	; 0
+ 4c6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 4c8:	23 81       	ldd	r18, Z+3	; 0x03
+		if(data != 0)
+ 4ca:	22 23       	and	r18, r18
+ 4cc:	09 f4       	brne	.+2      	; 0x4d0 <main+0x312>
+ 4ce:	95 ce       	rjmp	.-726    	; 0x1fa <main+0x3c>
+{'C','D','E','F'},
+};
+
+void lcdCommanda (unsigned char cmnd)
+{
+	LCD_DPRT = cmnd; //send cmnd to data port
+ 4d0:	1b b9       	out	0x0b, r17	; 11
+	LCD_CPRT &= ~(1<<LCD_RS); //RS = 0 for command
+ 4d2:	28 98       	cbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 4d4:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 4d6:	2a 9a       	sbi	0x05, 2	; 5
+ 4d8:	92 e0       	ldi	r25, 0x02	; 2
+ 4da:	9a 95       	dec	r25
+ 4dc:	f1 f7       	brne	.-4      	; 0x4da <main+0x31c>
+ 4de:	00 c0       	rjmp	.+0      	; 0x4e0 <main+0x322>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 4e0:	2a 98       	cbi	0x05, 2	; 5
+ 4e2:	e7 ec       	ldi	r30, 0xC7	; 199
+ 4e4:	f0 e0       	ldi	r31, 0x00	; 0
+ 4e6:	31 97       	sbiw	r30, 0x01	; 1
+ 4e8:	f1 f7       	brne	.-4      	; 0x4e6 <main+0x328>
+ 4ea:	00 c0       	rjmp	.+0      	; 0x4ec <main+0x32e>
+ 4ec:	00 00       	nop
+ 4ee:	87 ec       	ldi	r24, 0xC7	; 199
+ 4f0:	90 e0       	ldi	r25, 0x00	; 0
+ 4f2:	01 97       	sbiw	r24, 0x01	; 1
+ 4f4:	f1 f7       	brne	.-4      	; 0x4f2 <main+0x334>
+ 4f6:	00 c0       	rjmp	.+0      	; 0x4f8 <main+0x33a>
+ 4f8:	00 00       	nop
+ 4fa:	90 e0       	ldi	r25, 0x00	; 0
+ 4fc:	80 e2       	ldi	r24, 0x20	; 32
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 4fe:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 500:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 502:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 504:	2a 9a       	sbi	0x05, 2	; 5
+ 506:	e2 e0       	ldi	r30, 0x02	; 2
+ 508:	ea 95       	dec	r30
+ 50a:	f1 f7       	brne	.-4      	; 0x508 <main+0x34a>
+ 50c:	00 c0       	rjmp	.+0      	; 0x50e <main+0x350>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 50e:	2a 98       	cbi	0x05, 2	; 5
+ 510:	e7 ec       	ldi	r30, 0xC7	; 199
+ 512:	f0 e0       	ldi	r31, 0x00	; 0
+ 514:	31 97       	sbiw	r30, 0x01	; 1
+ 516:	f1 f7       	brne	.-4      	; 0x514 <main+0x356>
+ 518:	00 c0       	rjmp	.+0      	; 0x51a <main+0x35c>
+ 51a:	00 00       	nop
+{
+	unsigned char i = 0;
+	while (str[i]!=0)
+	{
+		lcdData(str[i]);
+		i++;
+ 51c:	9f 5f       	subi	r25, 0xFF	; 255
+}
+
+void lcd_print(char * str)
+{
+	unsigned char i = 0;
+	while (str[i]!=0)
+ 51e:	e9 2f       	mov	r30, r25
+ 520:	f0 e0       	ldi	r31, 0x00	; 0
+ 522:	e4 5e       	subi	r30, 0xE4	; 228
+ 524:	fe 4f       	sbci	r31, 0xFE	; 254
+ 526:	80 81       	ld	r24, Z
+ 528:	81 11       	cpse	r24, r1
+ 52a:	e9 cf       	rjmp	.-46     	; 0x4fe <main+0x340>
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 52c:	2b b9       	out	0x0b, r18	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 52e:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 530:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 532:	2a 9a       	sbi	0x05, 2	; 5
+ 534:	f2 e0       	ldi	r31, 0x02	; 2
+ 536:	fa 95       	dec	r31
+ 538:	f1 f7       	brne	.-4      	; 0x536 <main+0x378>
+ 53a:	00 c0       	rjmp	.+0      	; 0x53c <main+0x37e>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 53c:	2a 98       	cbi	0x05, 2	; 5
+ 53e:	87 ec       	ldi	r24, 0xC7	; 199
+ 540:	90 e0       	ldi	r25, 0x00	; 0
+ 542:	01 97       	sbiw	r24, 0x01	; 1
+ 544:	f1 f7       	brne	.-4      	; 0x542 <main+0x384>
+ 546:	00 c0       	rjmp	.+0      	; 0x548 <main+0x38a>
+ 548:	00 00       	nop
+ 54a:	90 e0       	ldi	r25, 0x00	; 0
+ 54c:	80 e2       	ldi	r24, 0x20	; 32
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 54e:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 550:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 552:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 554:	2a 9a       	sbi	0x05, 2	; 5
+ 556:	e2 e0       	ldi	r30, 0x02	; 2
+ 558:	ea 95       	dec	r30
+ 55a:	f1 f7       	brne	.-4      	; 0x558 <main+0x39a>
+ 55c:	00 c0       	rjmp	.+0      	; 0x55e <main+0x3a0>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 55e:	2a 98       	cbi	0x05, 2	; 5
+ 560:	e7 ec       	ldi	r30, 0xC7	; 199
+ 562:	f0 e0       	ldi	r31, 0x00	; 0
+ 564:	31 97       	sbiw	r30, 0x01	; 1
+ 566:	f1 f7       	brne	.-4      	; 0x564 <main+0x3a6>
+ 568:	00 c0       	rjmp	.+0      	; 0x56a <main+0x3ac>
+ 56a:	00 00       	nop
+{
+	unsigned char i = 0;
+	while (str[i]!=0)
+	{
+		lcdData(str[i]);
+		i++;
+ 56c:	9f 5f       	subi	r25, 0xFF	; 255
+}
+
+void lcd_print(char * str)
+{
+	unsigned char i = 0;
+	while (str[i]!=0)
+ 56e:	e9 2f       	mov	r30, r25
+ 570:	f0 e0       	ldi	r31, 0x00	; 0
+ 572:	e0 5f       	subi	r30, 0xF0	; 240
+ 574:	fe 4f       	sbci	r31, 0xFE	; 254
+ 576:	80 81       	ld	r24, Z
+ 578:	81 11       	cpse	r24, r1
+ 57a:	e9 cf       	rjmp	.-46     	; 0x54e <main+0x390>
+{'C','D','E','F'},
+};
+
+void lcdCommanda (unsigned char cmnd)
+{
+	LCD_DPRT = cmnd; //send cmnd to data port
+ 57c:	0b b9       	out	0x0b, r16	; 11
+	LCD_CPRT &= ~(1<<LCD_RS); //RS = 0 for command
+ 57e:	28 98       	cbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 580:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 582:	2a 9a       	sbi	0x05, 2	; 5
+ 584:	f2 e0       	ldi	r31, 0x02	; 2
+ 586:	fa 95       	dec	r31
+ 588:	f1 f7       	brne	.-4      	; 0x586 <main+0x3c8>
+ 58a:	00 c0       	rjmp	.+0      	; 0x58c <main+0x3ce>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 58c:	2a 98       	cbi	0x05, 2	; 5
+ 58e:	87 ec       	ldi	r24, 0xC7	; 199
+ 590:	90 e0       	ldi	r25, 0x00	; 0
+ 592:	01 97       	sbiw	r24, 0x01	; 1
+ 594:	f1 f7       	brne	.-4      	; 0x592 <main+0x3d4>
+ 596:	00 c0       	rjmp	.+0      	; 0x598 <main+0x3da>
+ 598:	00 00       	nop
+ 59a:	2f ce       	rjmp	.-930    	; 0x1fa <main+0x3c>
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 59c:	eb b8       	out	0x0b, r14	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 59e:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 5a0:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 5a2:	2a 9a       	sbi	0x05, 2	; 5
+ 5a4:	92 e0       	ldi	r25, 0x02	; 2
+ 5a6:	9a 95       	dec	r25
+ 5a8:	f1 f7       	brne	.-4      	; 0x5a6 <main+0x3e8>
+ 5aa:	00 c0       	rjmp	.+0      	; 0x5ac <main+0x3ee>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 5ac:	2a 98       	cbi	0x05, 2	; 5
+ 5ae:	e7 ec       	ldi	r30, 0xC7	; 199
+ 5b0:	f0 e0       	ldi	r31, 0x00	; 0
+ 5b2:	31 97       	sbiw	r30, 0x01	; 1
+ 5b4:	f1 f7       	brne	.-4      	; 0x5b2 <main+0x3f4>
+ 5b6:	00 c0       	rjmp	.+0      	; 0x5b8 <main+0x3fa>
+ 5b8:	00 00       	nop
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 5ba:	e6 b1       	in	r30, 0x06	; 6
+ 5bc:	f6 b1       	in	r31, 0x06	; 6
+ 5be:	76 b1       	in	r23, 0x06	; 6
+ 5c0:	46 b1       	in	r20, 0x06	; 6
+ 5c2:	36 b1       	in	r19, 0x06	; 6
+ 5c4:	26 b1       	in	r18, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 5c6:	83 b1       	in	r24, 0x03	; 3
+ 5c8:	a3 b1       	in	r26, 0x03	; 3
+ 5ca:	a8 70       	andi	r26, 0x08	; 8
+ 5cc:	80 71       	andi	r24, 0x10	; 16
+ 5ce:	90 e0       	ldi	r25, 0x00	; 0
+ 5d0:	8a 2b       	or	r24, r26
+ 5d2:	88 0f       	add	r24, r24
+ 5d4:	99 1f       	adc	r25, r25
+ 5d6:	88 0f       	add	r24, r24
+ 5d8:	99 1f       	adc	r25, r25
+ 5da:	88 0f       	add	r24, r24
+ 5dc:	99 1f       	adc	r25, r25
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 5de:	f2 70       	andi	r31, 0x02	; 2
+ 5e0:	e1 70       	andi	r30, 0x01	; 1
+ 5e2:	ef 2b       	or	r30, r31
+ 5e4:	74 70       	andi	r23, 0x04	; 4
+ 5e6:	7e 2b       	or	r23, r30
+ 5e8:	48 70       	andi	r20, 0x08	; 8
+ 5ea:	47 2b       	or	r20, r23
+ 5ec:	30 71       	andi	r19, 0x10	; 16
+ 5ee:	34 2b       	or	r19, r20
+ 5f0:	20 72       	andi	r18, 0x20	; 32
+ 5f2:	23 2b       	or	r18, r19
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 5f4:	82 2b       	or	r24, r18
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 5f6:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 5f8:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 5fa:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 5fc:	2a 9a       	sbi	0x05, 2	; 5
+ 5fe:	f2 e0       	ldi	r31, 0x02	; 2
+ 600:	fa 95       	dec	r31
+ 602:	f1 f7       	brne	.-4      	; 0x600 <main+0x442>
+ 604:	00 c0       	rjmp	.+0      	; 0x606 <main+0x448>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 606:	2a 98       	cbi	0x05, 2	; 5
+ 608:	87 ec       	ldi	r24, 0xC7	; 199
+ 60a:	90 e0       	ldi	r25, 0x00	; 0
+ 60c:	01 97       	sbiw	r24, 0x01	; 1
+ 60e:	f1 f7       	brne	.-4      	; 0x60c <main+0x44e>
+ 610:	00 c0       	rjmp	.+0      	; 0x612 <main+0x454>
+ 612:	00 00       	nop
+	}
+}
+
+void set_key_prt(unsigned char p)
+{
+	PORTC |= (0x01 & p) | (0x02 & p) | (0x04 & p) | (0x08 & p) | (0x10 & p) | (0x20 & p);
+ 614:	88 b1       	in	r24, 0x08	; 8
+ 616:	8f 61       	ori	r24, 0x1F	; 31
+ 618:	88 b9       	out	0x08, r24	; 8
+	PORTB |= ((0x40 & p)>>3) | ((0x80 & p)>>3);
+ 61a:	85 b1       	in	r24, 0x05	; 5
+ 61c:	88 61       	ori	r24, 0x18	; 24
+ 61e:	85 b9       	out	0x05, r24	; 5
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 620:	e6 b1       	in	r30, 0x06	; 6
+ 622:	f6 b1       	in	r31, 0x06	; 6
+ 624:	76 b1       	in	r23, 0x06	; 6
+ 626:	46 b1       	in	r20, 0x06	; 6
+ 628:	36 b1       	in	r19, 0x06	; 6
+ 62a:	26 b1       	in	r18, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 62c:	83 b1       	in	r24, 0x03	; 3
+ 62e:	a3 b1       	in	r26, 0x03	; 3
+ 630:	a8 70       	andi	r26, 0x08	; 8
+ 632:	80 71       	andi	r24, 0x10	; 16
+ 634:	90 e0       	ldi	r25, 0x00	; 0
+ 636:	8a 2b       	or	r24, r26
+ 638:	88 0f       	add	r24, r24
+ 63a:	99 1f       	adc	r25, r25
+ 63c:	88 0f       	add	r24, r24
+ 63e:	99 1f       	adc	r25, r25
+ 640:	88 0f       	add	r24, r24
+ 642:	99 1f       	adc	r25, r25
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 644:	f2 70       	andi	r31, 0x02	; 2
+ 646:	e1 70       	andi	r30, 0x01	; 1
+ 648:	ef 2b       	or	r30, r31
+ 64a:	74 70       	andi	r23, 0x04	; 4
+ 64c:	7e 2b       	or	r23, r30
+ 64e:	48 70       	andi	r20, 0x08	; 8
+ 650:	47 2b       	or	r20, r23
+ 652:	30 71       	andi	r19, 0x10	; 16
+ 654:	34 2b       	or	r19, r20
+ 656:	20 72       	andi	r18, 0x20	; 32
+ 658:	23 2b       	or	r18, r19
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 65a:	82 2b       	or	r24, r18
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 65c:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 65e:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 660:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 662:	2a 9a       	sbi	0x05, 2	; 5
+ 664:	92 e0       	ldi	r25, 0x02	; 2
+ 666:	9a 95       	dec	r25
+ 668:	f1 f7       	brne	.-4      	; 0x666 <main+0x4a8>
+ 66a:	00 c0       	rjmp	.+0      	; 0x66c <main+0x4ae>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 66c:	2a 98       	cbi	0x05, 2	; 5
+ 66e:	e7 ec       	ldi	r30, 0xC7	; 199
+ 670:	f0 e0       	ldi	r31, 0x00	; 0
+ 672:	31 97       	sbiw	r30, 0x01	; 1
+ 674:	f1 f7       	brne	.-4      	; 0x672 <main+0x4b4>
+ 676:	00 c0       	rjmp	.+0      	; 0x678 <main+0x4ba>
+ 678:	00 00       	nop
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 67a:	26 b1       	in	r18, 0x06	; 6
+ 67c:	36 b1       	in	r19, 0x06	; 6
+ 67e:	96 b1       	in	r25, 0x06	; 6
+ 680:	86 b1       	in	r24, 0x06	; 6
+ 682:	46 b1       	in	r20, 0x06	; 6
+ 684:	46 b1       	in	r20, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 686:	43 b1       	in	r20, 0x03	; 3
+ 688:	43 b1       	in	r20, 0x03	; 3
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 68a:	32 70       	andi	r19, 0x02	; 2
+ 68c:	21 70       	andi	r18, 0x01	; 1
+ 68e:	23 2b       	or	r18, r19
+ 690:	94 70       	andi	r25, 0x04	; 4
+ 692:	92 2b       	or	r25, r18
+ 694:	88 70       	andi	r24, 0x08	; 8
+			}
+			lcdData('2');
+			lcdData(get_key_pin());
+			set_key_prt(0xDF); //ground row 1
+			lcdData(get_key_pin());
+			colloc = (get_key_pin() & 0x0F); //read the columns
+ 696:	89 2b       	or	r24, r25
+			if(colloc != 0x0F) //column detected
+ 698:	8f 30       	cpi	r24, 0x0F	; 15
+ 69a:	21 f0       	breq	.+8      	; 0x6a4 <main+0x4e6>
+ 69c:	81 e0       	ldi	r24, 0x01	; 1
+ 69e:	90 e0       	ldi	r25, 0x00	; 0
+			{
+				rowloc = 1; //save row location
+ 6a0:	c1 e0       	ldi	r28, 0x01	; 1
+ 6a2:	0b cf       	rjmp	.-490    	; 0x4ba <main+0x2fc>
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 6a4:	fb b8       	out	0x0b, r15	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 6a6:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 6a8:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 6aa:	2a 9a       	sbi	0x05, 2	; 5
+ 6ac:	f2 e0       	ldi	r31, 0x02	; 2
+ 6ae:	fa 95       	dec	r31
+ 6b0:	f1 f7       	brne	.-4      	; 0x6ae <main+0x4f0>
+ 6b2:	00 c0       	rjmp	.+0      	; 0x6b4 <main+0x4f6>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 6b4:	2a 98       	cbi	0x05, 2	; 5
+ 6b6:	87 ec       	ldi	r24, 0xC7	; 199
+ 6b8:	90 e0       	ldi	r25, 0x00	; 0
+ 6ba:	01 97       	sbiw	r24, 0x01	; 1
+ 6bc:	f1 f7       	brne	.-4      	; 0x6ba <main+0x4fc>
+ 6be:	00 c0       	rjmp	.+0      	; 0x6c0 <main+0x502>
+ 6c0:	00 00       	nop
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 6c2:	e6 b1       	in	r30, 0x06	; 6
+ 6c4:	f6 b1       	in	r31, 0x06	; 6
+ 6c6:	76 b1       	in	r23, 0x06	; 6
+ 6c8:	46 b1       	in	r20, 0x06	; 6
+ 6ca:	36 b1       	in	r19, 0x06	; 6
+ 6cc:	26 b1       	in	r18, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 6ce:	83 b1       	in	r24, 0x03	; 3
+ 6d0:	a3 b1       	in	r26, 0x03	; 3
+ 6d2:	a8 70       	andi	r26, 0x08	; 8
+ 6d4:	80 71       	andi	r24, 0x10	; 16
+ 6d6:	90 e0       	ldi	r25, 0x00	; 0
+ 6d8:	8a 2b       	or	r24, r26
+ 6da:	88 0f       	add	r24, r24
+ 6dc:	99 1f       	adc	r25, r25
+ 6de:	88 0f       	add	r24, r24
+ 6e0:	99 1f       	adc	r25, r25
+ 6e2:	88 0f       	add	r24, r24
+ 6e4:	99 1f       	adc	r25, r25
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 6e6:	f2 70       	andi	r31, 0x02	; 2
+ 6e8:	e1 70       	andi	r30, 0x01	; 1
+ 6ea:	ef 2b       	or	r30, r31
+ 6ec:	74 70       	andi	r23, 0x04	; 4
+ 6ee:	7e 2b       	or	r23, r30
+ 6f0:	48 70       	andi	r20, 0x08	; 8
+ 6f2:	47 2b       	or	r20, r23
+ 6f4:	30 71       	andi	r19, 0x10	; 16
+ 6f6:	34 2b       	or	r19, r20
+ 6f8:	20 72       	andi	r18, 0x20	; 32
+ 6fa:	23 2b       	or	r18, r19
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 6fc:	82 2b       	or	r24, r18
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 6fe:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 700:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 702:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 704:	2a 9a       	sbi	0x05, 2	; 5
+ 706:	92 e0       	ldi	r25, 0x02	; 2
+ 708:	9a 95       	dec	r25
+ 70a:	f1 f7       	brne	.-4      	; 0x708 <main+0x54a>
+ 70c:	00 c0       	rjmp	.+0      	; 0x70e <main+0x550>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 70e:	2a 98       	cbi	0x05, 2	; 5
+ 710:	e7 ec       	ldi	r30, 0xC7	; 199
+ 712:	f0 e0       	ldi	r31, 0x00	; 0
+ 714:	31 97       	sbiw	r30, 0x01	; 1
+ 716:	f1 f7       	brne	.-4      	; 0x714 <main+0x556>
+ 718:	00 c0       	rjmp	.+0      	; 0x71a <main+0x55c>
+ 71a:	00 00       	nop
+	}
+}
+
+void set_key_prt(unsigned char p)
+{
+	PORTC |= (0x01 & p) | (0x02 & p) | (0x04 & p) | (0x08 & p) | (0x10 & p) | (0x20 & p);
+ 71c:	88 b1       	in	r24, 0x08	; 8
+ 71e:	8f 63       	ori	r24, 0x3F	; 63
+ 720:	88 b9       	out	0x08, r24	; 8
+	PORTB |= ((0x40 & p)>>3) | ((0x80 & p)>>3);
+ 722:	2c 9a       	sbi	0x05, 4	; 5
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 724:	e6 b1       	in	r30, 0x06	; 6
+ 726:	f6 b1       	in	r31, 0x06	; 6
+ 728:	76 b1       	in	r23, 0x06	; 6
+ 72a:	46 b1       	in	r20, 0x06	; 6
+ 72c:	36 b1       	in	r19, 0x06	; 6
+ 72e:	26 b1       	in	r18, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 730:	83 b1       	in	r24, 0x03	; 3
+ 732:	a3 b1       	in	r26, 0x03	; 3
+ 734:	a8 70       	andi	r26, 0x08	; 8
+ 736:	80 71       	andi	r24, 0x10	; 16
+ 738:	90 e0       	ldi	r25, 0x00	; 0
+ 73a:	8a 2b       	or	r24, r26
+ 73c:	88 0f       	add	r24, r24
+ 73e:	99 1f       	adc	r25, r25
+ 740:	88 0f       	add	r24, r24
+ 742:	99 1f       	adc	r25, r25
+ 744:	88 0f       	add	r24, r24
+ 746:	99 1f       	adc	r25, r25
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 748:	f2 70       	andi	r31, 0x02	; 2
+ 74a:	e1 70       	andi	r30, 0x01	; 1
+ 74c:	ef 2b       	or	r30, r31
+ 74e:	74 70       	andi	r23, 0x04	; 4
+ 750:	7e 2b       	or	r23, r30
+ 752:	48 70       	andi	r20, 0x08	; 8
+ 754:	47 2b       	or	r20, r23
+ 756:	30 71       	andi	r19, 0x10	; 16
+ 758:	34 2b       	or	r19, r20
+ 75a:	20 72       	andi	r18, 0x20	; 32
+ 75c:	23 2b       	or	r18, r19
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 75e:	82 2b       	or	r24, r18
+	_delay_us(100); //wait to make enable wide
+}
+
+void lcdData(unsigned char data)
+{
+	LCD_DPRT = data; //send data to data port
+ 760:	8b b9       	out	0x0b, r24	; 11
+	LCD_CPRT |= (1<<LCD_RS); //RS = 1 for data
+ 762:	28 9a       	sbi	0x05, 0	; 5
+	LCD_CPRT &= ~(1<<LCD_RW); //RW = 0 for write
+ 764:	29 98       	cbi	0x05, 1	; 5
+	LCD_CPRT |= (1<<LCD_EN); //EN = 1 for H-to-L pulse
+ 766:	2a 9a       	sbi	0x05, 2	; 5
+ 768:	f2 e0       	ldi	r31, 0x02	; 2
+ 76a:	fa 95       	dec	r31
+ 76c:	f1 f7       	brne	.-4      	; 0x76a <main+0x5ac>
+ 76e:	00 c0       	rjmp	.+0      	; 0x770 <main+0x5b2>
+	_delay_us(1); //wait to make enable wide
+	LCD_CPRT &= ~(1<<LCD_EN); //EN = 0 for H-to_L pulse
+ 770:	2a 98       	cbi	0x05, 2	; 5
+ 772:	87 ec       	ldi	r24, 0xC7	; 199
+ 774:	90 e0       	ldi	r25, 0x00	; 0
+ 776:	01 97       	sbiw	r24, 0x01	; 1
+ 778:	f1 f7       	brne	.-4      	; 0x776 <main+0x5b8>
+ 77a:	00 c0       	rjmp	.+0      	; 0x77c <main+0x5be>
+ 77c:	00 00       	nop
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 77e:	26 b1       	in	r18, 0x06	; 6
+ 780:	36 b1       	in	r19, 0x06	; 6
+ 782:	96 b1       	in	r25, 0x06	; 6
+ 784:	86 b1       	in	r24, 0x06	; 6
+ 786:	46 b1       	in	r20, 0x06	; 6
+ 788:	46 b1       	in	r20, 0x06	; 6
+	p |= ((0x10 & PINB)<<3) | ((0x08 & PINB)<<3);
+ 78a:	43 b1       	in	r20, 0x03	; 3
+ 78c:	43 b1       	in	r20, 0x03	; 3
+}
+
+int get_key_pin()
+{
+	int p = 0;
+	p |= (0x01 & PINC) | (0x02 & PINC) | (0x04 & PINC) | (0x08 & PINC) | (0x10 & PINC) | (0x20 & PINC);
+ 78e:	32 70       	andi	r19, 0x02	; 2
+ 790:	21 70       	andi	r18, 0x01	; 1
+ 792:	23 2b       	or	r18, r19
+ 794:	94 70       	andi	r25, 0x04	; 4
+ 796:	92 2b       	or	r25, r18
+ 798:	88 70       	andi	r24, 0x08	; 8
+			}
+			lcdData('3');
+			lcdData(get_key_pin());
+			set_key_prt(0xBF); //ground row 1
+			lcdData(get_key_pin());
+			colloc = (get_key_pin() & 0x0F); //read the columns
+ 79a:	89 2b       	or	r24, r25
+			if(colloc != 0x0F) //column detected
+ 79c:	8f 30       	cpi	r24, 0x0F	; 15
+ 79e:	21 f0       	breq	.+8      	; 0x7a8 <main+0x5ea>
+ 7a0:	82 e0       	ldi	r24, 0x02	; 2
+ 7a2:	90 e0       	ldi	r25, 0x00	; 0
+			{
+				rowloc = 2; //save row location
+ 7a4:	c2 e0       	ldi	r28, 0x02	; 2
+ 7a6:	89 ce       	rjmp	.-750    	; 0x4ba <main+0x2fc>
+				break; //exit while loop
+			}
+			lcdData('4');
+ 7a8:	84 e3       	ldi	r24, 0x34	; 52
+ 7aa:	0e 94 5b 00 	call	0xb6	; 0xb6 <lcdData>
+			lcdData(get_key_pin());
+ 7ae:	0e 94 be 00 	call	0x17c	; 0x17c <get_key_pin>
+ 7b2:	0e 94 5b 00 	call	0xb6	; 0xb6 <lcdData>
+	}
+}
+
+void set_key_prt(unsigned char p)
+{
+	PORTC |= (0x01 & p) | (0x02 & p) | (0x04 & p) | (0x08 & p) | (0x10 & p) | (0x20 & p);
+ 7b6:	88 b1       	in	r24, 0x08	; 8
+ 7b8:	8f 63       	ori	r24, 0x3F	; 63
+ 7ba:	88 b9       	out	0x08, r24	; 8
+	PORTB |= ((0x40 & p)>>3) | ((0x80 & p)>>3);
+ 7bc:	2b 9a       	sbi	0x05, 3	; 5
+				break; //exit while loop
+			}
+			lcdData('4');
+			lcdData(get_key_pin());
+			set_key_prt(0x7F); //ground row 1
+			lcdData(get_key_pin());
+ 7be:	0e 94 be 00 	call	0x17c	; 0x17c <get_key_pin>
+ 7c2:	0e 94 5b 00 	call	0xb6	; 0xb6 <lcdData>
+			colloc = (get_key_pin() & 0x0F); //read the columns
+ 7c6:	0e 94 be 00 	call	0x17c	; 0x17c <get_key_pin>
+ 7ca:	8f 70       	andi	r24, 0x0F	; 15
+			if(colloc != 0x0F)
+ 7cc:	8f 30       	cpi	r24, 0x0F	; 15
+ 7ce:	21 f0       	breq	.+8      	; 0x7d8 <main+0x61a>
+ 7d0:	83 e0       	ldi	r24, 0x03	; 3
+ 7d2:	90 e0       	ldi	r25, 0x00	; 0
+			{
+				rowloc = 3; //save row location
+ 7d4:	c3 e0       	ldi	r28, 0x03	; 3
+ 7d6:	71 ce       	rjmp	.-798    	; 0x4ba <main+0x2fc>
+ 7d8:	8c 2f       	mov	r24, r28
+ 7da:	90 e0       	ldi	r25, 0x00	; 0
+ 7dc:	6e ce       	rjmp	.-804    	; 0x4ba <main+0x2fc>
+
+000007de <_exit>:
+ 7de:	f8 94       	cli
+
+000007e0 <__stop_program>:
+ 7e0:	ff cf       	rjmp	.-2      	; 0x7e0 <__stop_program>
